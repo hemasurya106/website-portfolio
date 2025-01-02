@@ -1,0 +1,622 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background: #080808;
+    color: #fff;
+}
+
+#header {
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%; /* Adjust padding for better alignment */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width for better consistency */
+    background-color: #080808; /* Matches your body background */
+    z-index: 1000; /* Ensures visibility over other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+.logo {
+    width: 150px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px;
+    transition: color 0.3s;
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width:0; 
+    height:3px;
+    background: #ff004f;
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    transition:1s;
+}
+nav ul li a:hover:after{
+    width: 100%;
+}
+.middle {
+    display: flex; /* Activate Flexbox */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Center text alignment */
+}
+
+.middle h1 span{
+    color: #ff004f;
+    
+}
+.middle{
+    font-size: 30px;
+}
+.quote{
+
+    font-style: italic;
+}
+.about{
+    margin: 30px;
+}
+.about h2{
+    font-size: 50px;
+    font-weight: 300;
+    text-align: justify;  /* Spreads out text to cover more space */
+    padding: 20px; 
+}
+.about p {
+    color: grey; 
+    font-size: 24px; 
+    font-weight: bold; 
+    line-height: 1.8;  
+    letter-spacing: 0.5px;
+    text-align: justify;  
+    padding: 20px; 
+    border-radius: 20px; 
+    border: 3px solid rgb(9, 235, 209); 
+    background-color: black; 
+    position: relative;
+    animation: flicker 1.5s infinite;  
+}
+
+@keyframes flicker {
+    0% {
+        border-color: #00b5ff;  /* Bright cyan blue */
+    }
+    20% {
+        border-color: #1e40ff;  /* Deep electric blue */
+    }
+    40% {
+        border-color: #00b5ff;  /* Bright cyan blue */
+    }
+    60% {
+        border-color: #0077ff;  /* Classic vibrant blue */
+    }
+    80% {
+        border-color: #00b5ff;  /* Bright cyan blue */
+    }
+    100% {
+        border-color: #00b5ff;  /* Bright cyan blue */
+    }
+}
+.portfolio{
+    margin: 50px;
+    font-size: 30px;
+}
+.portfolio span{
+    font-size: 50px;
+    font-weight: 300;
+}
+/* Style for the entire projects section */
+.projects {
+    display: flex;  /* Use Flexbox for layout */
+    justify-content: space-between;  /* Ensure space between the boxes */
+    gap: 20px;  /* Space between each box */
+    flex-wrap: wrap;  /* Allow boxes to wrap on smaller screens */
+    padding: 20px;
+}
+
+/* Style for individual project boxes */
+.project {
+    position: relative;  /* Allows us to position content inside the box */
+    flex: 1 1 45%;  /* Flex properties to make boxes responsive */
+    min-width: 250px;  /* Minimum width of the boxes */
+    background-color: transparent;  /* Make the box transparent */
+    padding: 20px;
+    border-radius: 20px;  /* Curved corners */
+    overflow: hidden;  /* Hide content that goes beyond the box */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);  /* Light shadow for a raised effect */
+    transition: transform 0.3s ease-in-out;  /* Smooth transform on hover */
+    cursor: pointer;  /* Make the box clickable */
+}
+
+/* Flip card styles */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 250px;  /* Adjusted height for content */
+    perspective: 1000px;
+    font-family: sans-serif;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid #00b5ff;  /* Blue border to match the vibrant theme */
+    border-radius: 1rem;
+}
+
+.flip-card-front {
+    background: linear-gradient(120deg, #00b5ff 60%, rgba(0, 191, 255, 0.7) 88%, #0095b6 40%, rgba(0, 123, 255, 0.6) 48%);
+    color: #ffffff;  /* White text for contrast */
+    padding: 10px;
+}
+
+.flip-card-back {
+    background: linear-gradient(120deg, #00b5ff 30%, rgba(0, 191, 255, 0.8) 88%, #1e7d98 40%, rgba(0, 127, 255, 0.7) 78%);
+    color: #ffffff;  /* White text on the back */
+    transform: rotateY(180deg);
+    padding: 10px;
+}
+
+/* Add colorful hover effect to titles */
+.project h4, .project h5 {
+    color: #00090d;  /* Vibrant cyan text color */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);  /* Glowing effect */
+}
+
+.project:hover h4,
+.project:hover h5 {
+    color:#0ae6f6;  /* Bright red text on hover */
+    text-shadow: 2px 2px 5px rgba(255, 99, 71, 0.7);  /* Glowing red effect */
+}
+
+/* Add flip card hover effect */
+.flip-card:hover {
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.4);  /* Glowing effect on card hover */
+}
+/* Contact Section Styling */
+#contact {
+    padding: 50px 20px;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    
+}
+
+#contact .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-left {
+    margin: 20px auto;
+}
+
+.contact-left h1 {
+    font-size: 50px;
+    size: 50px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.contact-left p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.contact-left p i {
+    margin-right: 10px;
+    color: #007bff; /* Icon color */
+}
+
+/* Social Icons Styling */
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 24px;
+    color: #555;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+.social-icons a:nth-child(1) i {
+    color: #E4405F; /* Instagram */
+}
+
+.social-icons a:nth-child(2) i {
+    color: #0077B5; /* LinkedIn */
+}
+
+.social-icons a:nth-child(3) i {
+    color: #333; /* GitHub */
+}
+.social-icons{
+    display: flex;
+    justify-content: center;
+}
+/* From Uiverse.io by DavidTM96 */ 
+.form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    font-family: inherit;
+    gap: 10px;
+    padding-inline: 2em;
+    padding-bottom: 0.4em;
+    background-color: #171717;
+    background-color: #0a192f;
+    border-radius: 20px;
+  }
+  
+  .form-heading {
+    text-align: center;
+    margin: 2em;
+    color: #64ffda;
+    font-size: 1.2em;
+    background-color: transparent;
+    align-self: center;
+  }
+  
+  .form-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 10px;
+    padding: 0.6em;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  }
+  
+  .input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #ccd6f6;
+    padding-inline: 1em;
+  }
+  
+  .submit {
+    cursor: pointer;
+    margin-bottom: 3em;
+    padding: 1em;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #64ffda;
+    font-weight: bold;
+    outline: 1px solid #64ffda;
+    transition: all ease-in-out 0.3s;
+  }
+  
+  .submit:hover {
+    transition: all ease-in-out 0.3s;
+    background-color: #64ffda;
+    color: #000;
+    cursor: pointer;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  }
+  
+  .form-card1 {
+    background-image: linear-gradient(163deg, #64ffda 0%, #64ffda 100%);
+    border-radius: 22px;
+    transition: all 0.3s;
+  }
+  
+  .form-card1:hover {
+    box-shadow: 0px 0px 30px 1px rgba(100, 255, 218, 0.3);
+  }
+  
+  .form-card2 {
+    border-radius: 0;
+    transition: all 0.2s;
+  }
+  
+  .form-card2:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+  }
+  .edit {
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    max-width: 600px; /* Increase the max-width for a larger container */
+    width: 100%; /* Ensure it can expand up to the maximum width */
+    height: 500px; /* Ensure the height takes the full available space */
+    max-height: 600px;
+    margin: 0 auto; /* Optionally center the container itself */
+}
+/* From Uiverse.io by Saad3092003 */ 
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+  }
+  
+  button.learn-more {
+    width: 12rem;
+    height: auto;
+  }
+  .see{
+    display: flex;
+    justify-content: center;
+  }
+  button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    box-shadow: 0 0 5px 1px white;
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #282936;
+    border-radius: 1.625rem;
+  }
+  
+  button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+  }
+  
+  button.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+  }
+  
+  button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+  }
+  
+  button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: rgba(255, 255, 255, 0.493);
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  button:hover .circle {
+    width: 100%;
+    box-shadow: 0 0 10px 2px white;
+  }
+  
+  button:hover .button-text {
+    transform: translate(-1.7rem, 0);
+  }
+  
+  button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(8.7rem, 0);
+  }
+  
+  button:active .circle .icon.arrow {
+    transform: translate(9.5rem, 0);
+    transition: all 0.3s;
+  }
+  
+  button:active .circle {
+    transform: scale(0.9);
+    transition: all 0.3s;
+    box-shadow: 0 0 5px 0.5px white;
+  }
+  
+  button:hover .button-text {
+    color: #fff;
+  }
+  
+  button:active .button-text {
+    color: rgba(255, 255, 255, 0.459);
+  }
+  @media only screen and (max-width: 600px) {
+    /* Header styles for small screens */
+    #header {
+        background-image: url('images/phone-background.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .header-text {
+        margin-top: 100%; /* Adjust spacing for proper alignment */
+        font-size: 16px;
+        text-align: center;
+        padding: 10px; /* Added padding to prevent text touching edges */
+        line-height: 1.5; /* Improved line spacing for readability */
+    }
+
+    .header-text h1 {
+        font-size: 30px; /* Ensure clear readability */
+        margin-bottom: 10px; /* Add spacing below the heading */
+    }
+
+    /* Navigation menu adjustments */
+    nav ul {
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        margin: 20px 0;
+        padding: 0; /* Avoid extra space around the menu */
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+
+    /* Home Page Text Adjustments */
+    .home-page-text {
+        padding: 20px;
+        margin: 10px 0; /* Add spacing around content */
+        line-height: 1.5; /* Prevent overlapping of text */
+        text-align: justify; /* Align text neatly */
+        font-size: 16px;
+    }
+
+    /* Middle section adjustments */
+    .middle {
+        height: auto;
+        padding: 20px;
+    }
+
+    .middle h1 {
+        font-size: 24px;
+        margin-bottom: 10px; /* Add spacing to avoid overlap */
+    }
+
+    .middle p {
+        font-size: 14px;
+        margin: 10px 0; /* Add space between paragraphs */
+        line-height: 1.5; /* Prevent text crowding */
+    }
+
+    /* About section adjustments */
+    .about h2 {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 20px; /* Add spacing below heading */
+    }
+
+    .about p {
+        font-size: 18px;
+        padding: 10px;
+        line-height: 1.6; /* Improve readability */
+    }
+
+    /* Portfolio section adjustments */
+    .portfolio span {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .projects {
+        flex-direction: column;
+        gap: 20px; /* Slightly increase the gap for clarity */
+    }
+
+    .project {
+        flex: 1 1 100%;
+        padding: 10px; /* Add padding for better spacing */
+    }
+
+    /* Contact section adjustments */
+    #contact {
+        flex-direction: column;
+        padding: 20px; /* Add padding to prevent overlap */
+    }
+
+    .contact-left h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .contact-left p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+        margin: 0 5px; /* Add spacing between icons */
+    }
+}
